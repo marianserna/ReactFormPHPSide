@@ -3,22 +3,6 @@ header('Content-Type: application/json');
 require_once 'cors.php';
 require_once 'connection.php';
 
-// 1) receive the params submitted from form
-
-// 2) validate the params
-// a) does this user already exist?
-
-// Make connection to db
-$conn = new mysqli('127.0.0.1', 'root', '', 'mycms');
-// check connection
-if ($conn->connect_error) {
-	echo json_encode(array(
-		"result" => false,
-		"errors" => array("Can't connect to database")
-	));
-	die(0);
-}
-
 // sql injection attack
 $username = $conn->real_escape_string($_POST['username']);
 
